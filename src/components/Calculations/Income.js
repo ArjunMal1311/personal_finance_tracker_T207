@@ -18,7 +18,7 @@ function Income() {
   const fetchIncomeData = async () => {
     const authToken = localStorage.getItem('authToken');
     try {
-      const response = await axios.get('https://check-returns.onrender.com/income', {
+      const response = await axios.get('https://check-returns-70te.onrender.com/income', {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -62,7 +62,7 @@ function Income() {
   const handleDelete = async (id) => {
     const authToken = localStorage.getItem('authToken');
     try {
-      await axios.delete(`https://check-returns.onrender.com/income/${id}`, {
+      await axios.delete(`https://check-returns-70te.onrender.com/income/${id}`, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -82,13 +82,13 @@ function Income() {
       setIsUpdating(true);
 
       if (income._id) {
-        await axios.put(`https://check-returns.onrender.com/income/${income._id}`, income, {
+        await axios.put(`https://check-returns-70te.onrender.com/income/${income._id}`, income, {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },
         });
       } else {
-        await axios.post('https://check-returns.onrender.com/income', income, {
+        await axios.post('https://check-returns-70te.onrender.com/income', income, {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },

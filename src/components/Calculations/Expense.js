@@ -16,7 +16,7 @@ function Expense() {
   const fetchData = async () => {
     const authToken = localStorage.getItem('authToken');
     try {
-      const response = await axios.get('https://check-returns.onrender.com/expense', {
+      const response = await axios.get('https://check-returns-70te.onrender.com/expense', {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -59,7 +59,7 @@ function Expense() {
   const handleDelete = async (id) => {
     const authToken = localStorage.getItem('authToken');
     try {
-      await axios.delete(`https://check-returns.onrender.com/expense/${id}`, {
+      await axios.delete(`https://check-returns-70te.onrender.com/expense/${id}`, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -79,13 +79,13 @@ function Expense() {
       setIsUpdating(true);
 
       if (expense._id) {
-        await axios.put(`https://check-returns.onrender.com/expense/${expense._id}`, expense, {
+        await axios.put(`https://check-returns-70te.onrender.com/expense/${expense._id}`, expense, {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },
         });
       } else {
-        await axios.post('https://check-returns.onrender.com/expense', expense, {
+        await axios.post('https://check-returns-70te.onrender.com/expense', expense, {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },

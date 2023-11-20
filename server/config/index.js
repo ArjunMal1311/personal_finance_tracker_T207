@@ -3,7 +3,7 @@ const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
-const FRONTEND_URL = "https://mern-ethnus.vercel.app";
+const FRONTEND_URL = "https://check-my-returns.vercel.app";
 
 module.exports = (app) => {
   app.set("trust proxy", 1);

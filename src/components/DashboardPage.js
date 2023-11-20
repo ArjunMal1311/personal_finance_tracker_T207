@@ -20,13 +20,13 @@ function DashboardPage() {
     const fetchIncomeAndExpense = async () => {
       const authToken = localStorage.getItem('authToken');
       try {
-        const incomeResponse = await axios.get('https://check-returns.onrender.com/income', {
+        const incomeResponse = await axios.get('https://check-returns-70te.onrender.com/income', {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },
         });
 
-        const expenseResponse = await axios.get('https://check-returns.onrender.com/expense', {
+        const expenseResponse = await axios.get('https://check-returns-70te.onrender.com/expense', {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },
