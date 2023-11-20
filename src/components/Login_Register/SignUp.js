@@ -32,7 +32,7 @@ function SignupPage(props) {
   };
 
   return (
-    <div className='bg-gradient-to-r from-[#f1f7f1] to-[#ebf4f8] pb-20 h-fit'>
+    <div className='bg-gradient-to-r from-[#f1f7f1] to-[#ebf4f8] pb-20 h-fit min-h-screen'>
       <div className='flex flex-col justify-center items-center pt-24 '>
         <div className='bg-gradient-to-r text-[20px] font-extrabold uppercase leading-[24.2px] tracking-widest md:text-[26px] md:leading-[30px] lg:leading-[36px] bg-clip-text mb-4 text-[#414141] lg:text-[32px]'>
           CHECK RETURNS
