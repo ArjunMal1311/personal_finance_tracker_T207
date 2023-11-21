@@ -141,7 +141,7 @@ function DashboardPage() {
 
       <div className="my-8 bg-gray-400 h-16 w-1 rounded-full hidden sm:block dark:bg-opacity-20"></div>
 
-      <div className={` h-[180px] flex justify-center items-center flex-col w-full p-4 mb-8`}>
+      <div className={` h-[180px] flex justify-center mt-4 items-center flex-col w-full p-4 mb-8`}>
         <div className='text-[24px] font-extrabold uppercase tracking-widest text-[#29abe2]'>
           Share Your Thoughts
         </div>
@@ -150,7 +150,7 @@ function DashboardPage() {
           <p className='text-[18px] text-gray-500 mb-4'>
             Discover new possibilities and share your feedback with us!
           </p>
-          <a className='w-[200px] no-underline text-center rounded-lg bg-[#29abe2] text-white px-4 py-2 font-semibold select-none cursor-pointer hover:bg-[#1a1a1a] transition-colors'>
+          <a href='https://hxm3c82zmak.typeform.com/to/zsdsDUHE' className='w-[200px] no-underline text-center rounded-lg bg-[#29abe2] text-white px-4 py-2 font-semibold select-none cursor-pointer hover:bg-[#1a1a1a] transition-colors'>
             Give Feedback
           </a>
         </div>
