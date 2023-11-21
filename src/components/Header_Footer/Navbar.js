@@ -58,7 +58,7 @@ function NavBar() {
             {isOpen && (
               <div className='absolute z-50 rounded-xl shadow-md w-[40vw]  md:w-1/3 bg-white overflow-hidden right-0 top-12 text-sm hover:cursor-pointer border-2'>
                 <div>
-                  {false ? (
+                  {isLoggedIn ? (
                     <>
                       <a href="/expense" className='px-2.5 block no-underline text-black py-2.5 hover:bg-neutral-300 transition font-semibold cursor-pointer'>My Expense</a>
                       <a href="/income" className='px-2.5 block no-underline text-black py-2.5 hover:bg-neutral-300 transition font-semibold cursor-pointer'>My Income</a>
