@@ -30,8 +30,8 @@ const Calculator = () => {
     }]
     return (
         <div>
-            <div className={`mx-16 text-center text-[35px] my-4 font-semibold`}>
-            <div className='bg-clip-text text-transparent bg-gradient-to-r from-[#5A32A3] to-[#D03592] relative sm:text-[40px] text-[30px] font-bold'>All Calculators</div>
+            <div className={`mx-16 text-center text-[35px] font-semibold`}>
+            <div className='bg-clip-text text-transparent pt-20 bg-gradient-to-r from-[#5A32A3] to-[#D03592] relative sm:text-[40px] text-[30px] font-bold'>All Calculators</div>
             </div>
 
             <div className='flex flex-wrap justify-center'>

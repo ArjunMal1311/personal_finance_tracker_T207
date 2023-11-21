@@ -128,7 +128,7 @@ const FixedDeposit = () => {
     };
 
     return (
-        <div className={`lg:mx-16 mx-4 my-8`}>
+        <div className={`lg:mx-16 mx-4 py-24`}>
             <h2 className='flex justify-between sm:flex-row sm:items-center flex-col'>
                 <div className='bg-clip-text text-transparent bg-gradient-to-r from-[#5A32A3] to-[#D03592] relative sm:text-[40px] text-[30px] font-bold'>Fixed Deposit Calculator</div>
                 <a href="/calculator" className='bg-gray-200 px-3 py-1 rounded-xl h-fit font-normal mt-1 w-fit select-none cursor-pointer hover:bg-gray-400 no-underline text-black transition duration-500 text-[16px]'>All Calculators</a>

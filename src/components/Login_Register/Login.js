@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import authService from "../../services/auth";
+import toast from "react-hot-toast";
 
 function LoginPage(props) {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ function LoginPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
-  
+
   const { storeToken, authenticateUser } = useContext(AuthContext);
 
   // Handle Event Changes
@@ -20,20 +21,32 @@ function LoginPage(props) {
   // Handle Login Submit Function
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { email, password };
 
-    authService.login(requestBody).then((response) => {
-      storeToken(response.data.authToken);
-      return authenticateUser();
-    })
-      .then(() => {
-        navigate("/dashboard");
-      })
-      .catch((error) => {
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
-      })
+    toast.promise(
+      (async () => {
+        const requestBody = { email, password };
+
+        await authService.login(requestBody)
+          .then((response) => {
+            storeToken(response.data.authToken);
+            return authenticateUser();
+          })
+          .then(() => {
+            navigate("/dashboard");
+          })
+          .catch((error) => {
+            const errorDescription = error.response.data.message;
+            setErrorMessage(errorDescription);
+          });
+      })(),
+      {
+        loading: "Loading",
+        success: "Success",
+        error: "Error"
+      }
+    );
   };
+
 
   return (
     <div className='bg-gradient-to-r from-[#f1f7f1] to-[#ebf4f8] pt-8 pb-20 h-fit min-h-screen'>

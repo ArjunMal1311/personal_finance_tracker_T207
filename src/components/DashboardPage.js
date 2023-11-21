@@ -5,6 +5,7 @@ import { GiReceiveMoney } from "react-icons/gi"
 import { GiPayMoney } from "react-icons/gi";
 import img from "./main_page_bg.png"
 import { FaBalanceScale } from 'react-icons/fa';
+import toast from 'react-hot-toast';
 
 function DashboardPage() {
   const { user } = useContext(AuthContext);
@@ -65,7 +66,7 @@ function DashboardPage() {
 
 
   if (loading) {
-    return <div>Loading...</div>;
+    toast('Loading!')
   }
 
   if (error) {

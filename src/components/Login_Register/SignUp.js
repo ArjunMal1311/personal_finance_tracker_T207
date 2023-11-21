@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import authService from "../../services/auth";
+import toast from "react-hot-toast";
 
 function SignupPage(props) {
   const navigate = useNavigate();
@@ -19,17 +20,29 @@ function SignupPage(props) {
   // Handle Signup Submit
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { email, password, name };
 
-    authService.signup(requestBody)
-      .then((response) => {
-        navigate("/auth/login");
-      })
-      .catch((error) => {
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
-      })
+    toast.promise(
+      (async () => {
+        const requestBody = { email, password, name };
+
+        await authService.signup(requestBody)
+          .then((response) => {
+            navigate("/auth/login");
+          })
+          .catch((error) => {
+            const errorDescription = error.response.data.message;
+            setErrorMessage(errorDescription);
+          })
+      })(),
+      {
+        loading: "Loading",
+        success: "Success",
+        error: "Error"
+      }
+    )
   };
+
+
 
   return (
     <div className='bg-gradient-to-r from-[#f1f7f1] to-[#ebf4f8] pb-20 h-fit min-h-screen'>
