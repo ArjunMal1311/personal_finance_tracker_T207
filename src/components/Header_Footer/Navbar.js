@@ -42,6 +42,12 @@ function NavBar() {
             <a href='/balance' className='text-bold border-2 select-none no-underline text-black hover:bg-gray-200 border-neutral-200  px-3 py-1 rounded-lg cursor-pointer' >
               Balance
             </a>
+            <a href='/about' className='text-bold sm:flex hidden border-2 select-none no-underline text-black hover:bg-gray-200 border-neutral-200  px-3 py-1 rounded-lg cursor-pointer' >
+              About Us
+            </a>
+            <a href='/contact' className='text-bold sm:flex hidden border-2 select-none no-underline text-black hover:bg-gray-200 border-neutral-200  px-3 py-1 rounded-lg cursor-pointer' >
+              Contact
+            </a>
 
             <div onClick={toggleOpen} className='md:py-2 md:px-3 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition' >
               <div className="block">
@@ -50,13 +56,15 @@ function NavBar() {
             </div>
 
             {isOpen && (
-              <div className='absolute z-50 rounded-xl shadow-md w-[40vw]  md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm hover:cursor-pointer border-2'>
+              <div className='absolute z-50 rounded-xl shadow-md w-[40vw]  md:w-1/3 bg-white overflow-hidden right-0 top-12 text-sm hover:cursor-pointer border-2'>
                 <div>
-                  {isLoggedIn ? (
+                  {false ? (
                     <>
                       <a href="/expense" className='px-2.5 block no-underline text-black py-2.5 hover:bg-neutral-300 transition font-semibold cursor-pointer'>My Expense</a>
                       <a href="/income" className='px-2.5 block no-underline text-black py-2.5 hover:bg-neutral-300 transition font-semibold cursor-pointer'>My Income</a>
                       <a href="/calculator" className='px-2.5 block no-underline text-black py-2.5 hover:bg-neutral-300 transition font-semibold cursor-pointer'>Calculator</a>
+                      <a href="/calculator" className='px-2.5 sm:hidden block no-underline text-black py-2.5 hover:bg-neutral-300 transition font-semibold cursor-pointer'>About Us</a>
+                      <a href="/calculator" className='px-2.5 sm:hidden block no-underline text-black py-2.5 hover:bg-neutral-300 transition font-semibold cursor-pointer'>Contact</a>
                       <div onClick={logOutUser} className='px-2.5 block no-underline text-black py-2.5 hover:bg-neutral-300 transition font-semibold cursor-pointer'>Sign Out</div>
                     </>
 
@@ -65,6 +73,8 @@ function NavBar() {
                       <a href="/auth/login" className='px-2.5 block no-underline text-black py-2.5 hover:bg-neutral-100 transition font-semibold cursor-pointer'>Login</a>
                       <a href="/calculator" className='px-2.5 block no-underline text-black py-2.5 hover:bg-neutral-100 transition font-semibold cursor-pointer'>Calculator</a>
                       <a href="/auth/signup" className='px-2.5 block no-underline text-black py-2.5 hover:bg-neutral-100 transition font-semibold cursor-pointer'>Register</a>
+                      <a href="/calculator" className='px-2.5 sm:hidden block no-underline text-black py-2.5 hover:bg-neutral-300 transition font-semibold cursor-pointer'>About Us</a>
+                      <a href="/calculator" className='px-2.5 sm:hidden block no-underline text-black py-2.5 hover:bg-neutral-300 transition font-semibold cursor-pointer'>Contact</a>
                     </>
                   )}
                 </div>

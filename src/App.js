@@ -13,6 +13,8 @@ import Navbar from "./components/Header_Footer/Navbar"
 import Footer from "./components/Header_Footer/Footer"
 import FixedDeposit from './components/Calculator/Calculator';
 import Calculator from './components/MainCalculator/Calculator';
+import About from './components/About/About';
+import Contact from './components/Contact/Contact';
 
 
 function App() {
@@ -20,7 +22,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        Registration + Login Routes
+        {/* Registration + Login Routes */}
         <Route path="/auth/signup" element={<CheckValidation><SignUp /></CheckValidation>} />
         <Route path="/auth/login" element={<CheckValidation><Login /></CheckValidation>} />
 
@@ -32,8 +34,15 @@ function App() {
         <Route path="/income" element={<IsPrivate><Income /></IsPrivate>} />
         <Route path="/expense" element={<IsPrivate><Expense /></IsPrivate>} />
         <Route path="/balance" element={<IsPrivate><Balance /></IsPrivate>} />
-        <Route path='/calculator' element={<Calculator />} />
         <Route path='/calculator/fixed-deposit' element={<FixedDeposit />} />
+        <Route path='/calculator' element={<Calculator />} />
+
+        {/* About */}
+        <Route path='/about' element={<About />} />
+
+        {/* Contact */}
+        <Route path='/contact' element={<Contact />} />
+
       </Routes>
       <Footer />
     </div >

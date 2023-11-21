@@ -73,8 +73,8 @@ function DashboardPage() {
   }
 
   return (
-    <div className='flex flex-col  items-center bg-clip-text'>
-      <div className='mt-32 bg-gradient-to-r text-[24px]  font-extrabold uppercase leading-[24.2px] tracking-widest md:text-[26px] md:leading-[30px] lg:leading-[36px] bg-clip-text text-transparent from-[#3DBFF5] to-[#6F42C1] lg:text-[32px]'>
+    <div className='flex flex-col items-center bg-gradient-to-r from-[#edfced] to-[#deeef5] '>
+      <div className='mt-32 bg-gradient-to-r text-[24px] font-extrabold uppercase leading-[24.2px] tracking-widest md:text-[26px] md:leading-[30px] lg:leading-[36px] bg-clip-text text-transparent from-[#3DBFF5] to-[#6F42C1] lg:text-[32px]'>
         CHECK RETURNS
       </div>
       <h1 className='text-gray-900 dark:text-dark-gray-900 text-[28px] font-extrabold leading-[34px] tracking-tight md:text-[40px] md:leading-[48px] lg:text-5xl lg:leading-[55px] w-full max-w-[740px] !whitespace-pre-line text-center mt-8'>
@@ -123,9 +123,9 @@ function DashboardPage() {
         </div>
       </div>
 
-      <div className={`bg-gray-200 h-[350px] bg-center bg-cover mt-16 flex justify-center items-center flex-col w-full`}>
-        <div className='bg-gradient-to-r text-[20px] font-extrabold uppercase leading-[24px] tracking-widest md:text-[26px] md:leading-[30px] lg:leading-[36px] bg-clip-text mb-4 text-[#414141] lg:text-[32px]'>
-          Check Returns
+      <div className={`bg-gray-800 h-[350px] bg-center bg-cover mt-16 flex justify-center items-center flex-col w-full`}>
+        <div className='bg-gradient-to-r text-[24px]  font-extrabold uppercase leading-[24.2px] tracking-widest md:text-[26px] md:leading-[30px] lg:leading-[36px] bg-clip-text text-transparent from-[#3DBFF5] to-[#6F42C1] lg:text-[32px]'>
+          CHECK RETURNS
         </div>
 
         <div className='text-gray-50 sm:text-[28px] text-[20px] font-extrabold leadin-[34px] tracking-tight md:text-[40px] md:leading-[48px] lg:text-5xl lg:leading-[55px] mt-4'>
@@ -138,9 +138,9 @@ function DashboardPage() {
         </div>
       </div>
 
-      <div className="bg-gray-400 my-12 h-16 w-1 rounded-full hidden sm:block dark:bg-opacity-20"></div>
+      <div className="my-8 bg-gray-400 h-16 w-1 rounded-full hidden sm:block dark:bg-opacity-20"></div>
 
-      <div className={` h-[350px] flex justify-center items-center flex-col w-full p-4`}>
+      <div className={` h-[180px] flex justify-center items-center flex-col w-full p-4 mb-8`}>
         <div className='text-[24px] font-extrabold uppercase tracking-widest text-[#29abe2]'>
           Share Your Thoughts
         </div>
@@ -154,8 +154,6 @@ function DashboardPage() {
           </a>
         </div>
       </div>
-
-
     </div>
   );
 }
