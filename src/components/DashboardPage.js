@@ -10,7 +10,7 @@ function DashboardPage() {
   const { user } = useContext(AuthContext);
   const [incomes, setIncomes] = useState([]);
   const [expenses, setExpenses] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [totalIncome, setTotalIncome] = useState(0);
   const [totalExpense, setTotalExpense] = useState(0);
@@ -122,6 +122,40 @@ function DashboardPage() {
           </div>
         </div>
       </div>
+
+      <div className={`bg-gray-200 h-[350px] bg-center bg-cover mt-16 flex justify-center items-center flex-col w-full`}>
+        <div className='bg-gradient-to-r text-[20px] font-extrabold uppercase leading-[24px] tracking-widest md:text-[26px] md:leading-[30px] lg:leading-[36px] bg-clip-text mb-4 text-[#414141] lg:text-[32px]'>
+          Check Returns
+        </div>
+
+        <div className='text-gray-50 sm:text-[28px] text-[20px] font-extrabold leadin-[34px] tracking-tight md:text-[40px] md:leading-[48px] lg:text-5xl lg:leading-[55px] mt-4'>
+          Check your Returns today!
+        </div>
+
+        <div className='flex space-x-2 sm:w-[350px] w-[250px] justify-around mt-10'>
+          <a className='w-[150px] no-underline text-center rounded-lg bg-white text-[#202020] px-3 py-2 font-semibold select-none cursor-pointer' href='/calculator'>Calculator</a>
+          <a className='w-[150px] no-underline text-center rounded-lg bg-[#29abe2] text-white px-3 py-2 font-semibold select-none cursor-pointer' href='/login'>Login</a>
+        </div>
+      </div>
+
+      <div className="bg-gray-400 my-12 h-16 w-1 rounded-full hidden sm:block dark:bg-opacity-20"></div>
+
+      <div className={` h-[350px] flex justify-center items-center flex-col w-full p-4`}>
+        <div className='text-[24px] font-extrabold uppercase tracking-widest text-[#29abe2]'>
+          Share Your Thoughts
+        </div>
+
+        <div className='flex flex-col items-center mt-3'>
+          <p className='text-[18px] text-gray-500 mb-4'>
+            Discover new possibilities and share your feedback with us!
+          </p>
+          <a className='w-[200px] no-underline text-center rounded-lg bg-[#29abe2] text-white px-4 py-2 font-semibold select-none cursor-pointer hover:bg-[#1a1a1a] transition-colors'>
+            Give Feedback
+          </a>
+        </div>
+      </div>
+
+
     </div>
   );
 }

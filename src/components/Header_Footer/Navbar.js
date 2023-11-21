@@ -56,12 +56,14 @@ function NavBar() {
                     <>
                       <a href="/expense" className='px-2.5 block no-underline text-black py-2.5 hover:bg-neutral-300 transition font-semibold cursor-pointer'>My Expense</a>
                       <a href="/income" className='px-2.5 block no-underline text-black py-2.5 hover:bg-neutral-300 transition font-semibold cursor-pointer'>My Income</a>
+                      <a href="/calculator" className='px-2.5 block no-underline text-black py-2.5 hover:bg-neutral-300 transition font-semibold cursor-pointer'>Calculator</a>
                       <div onClick={logOutUser} className='px-2.5 block no-underline text-black py-2.5 hover:bg-neutral-300 transition font-semibold cursor-pointer'>Sign Out</div>
                     </>
 
                   ) : (
                     <>
                       <a href="/auth/login" className='px-2.5 block no-underline text-black py-2.5 hover:bg-neutral-100 transition font-semibold cursor-pointer'>Login</a>
+                      <a href="/calculator" className='px-2.5 block no-underline text-black py-2.5 hover:bg-neutral-100 transition font-semibold cursor-pointer'>Calculator</a>
                       <a href="/auth/signup" className='px-2.5 block no-underline text-black py-2.5 hover:bg-neutral-100 transition font-semibold cursor-pointer'>Register</a>
                     </>
                   )}
