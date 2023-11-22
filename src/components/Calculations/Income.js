@@ -16,23 +16,33 @@ function Income() {
   }, []);
 
   const fetchIncomeData = async () => {
-    const authToken = localStorage.getItem('authToken');
-    try {
-      const response = await axios.get('https://check-returns-70te.onrender.com/income', {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      });
 
-      if (response.status === 200 && Array.isArray(response.data)) {
-        setIncomes(response.data);
+    toast.promise(
+      (async () => {
+        const authToken = localStorage.getItem('authToken');
+        try {
+          const response = await axios.get('https://check-returns-70te.onrender.com/income', {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          });
+
+          if (response.status === 200 && Array.isArray(response.data)) {
+            setIncomes(response.data);
+          }
+          else {
+            console.log("Error: Expected array but received:", response.data);
+          }
+        } catch (error) {
+          console.error(error);
+        }
       }
-      else {
-        console.log("Error: Expected array but received:", response.data);
-      }
-    } catch (error) {
-      console.error(error);
+      )(), {
+      loading: "Loading",
+      success: "Success",
+      error: "Error"
     }
+    )
   };
 
   const handleEdit = income => {
@@ -60,55 +70,76 @@ function Income() {
   };
 
   const handleDelete = async (id) => {
-    const authToken = localStorage.getItem('authToken');
-    try {
-      await axios.delete(`https://check-returns-70te.onrender.com/income/${id}`, {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      });
 
-      setIncomes(incomes.filter(income => income._id !== id));
-    } catch (error) {
-      console.error(error);
+    toast.promise(
+      (async () => {
+        const authToken = localStorage.getItem('authToken');
+        try {
+          await axios.delete(`https://check-returns-70te.onrender.com/income/${id}`, {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          });
+
+          setIncomes(incomes.filter(income => income._id !== id));
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      )(), {
+      loading: "Loading",
+      success: "Success",
+      error: "Error"
     }
+    )
   };
 
   const handleSubmit = async (e, income, setter) => {
     e.preventDefault();
 
-    const authToken = localStorage.getItem('authToken');
-    try {
-      setIsUpdating(true);
 
-      if (income._id) {
-        await axios.put(`https://check-returns-70te.onrender.com/income/${income._id}`, income, {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        });
-      } else {
-        await axios.post('https://check-returns-70te.onrender.com/income', income, {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        });
+    toast.promise(
+      (async () => {
+        const authToken = localStorage.getItem('authToken');
+        try {
+          setIsUpdating(true);
+
+          if (income._id) {
+            await axios.put(`https://check-returns-70te.onrender.com/income/${income._id}`, income, {
+              headers: {
+                Authorization: `Bearer ${authToken}`,
+              },
+            });
+          } else {
+            await axios.post('https://check-returns-70te.onrender.com/income', income, {
+              headers: {
+                Authorization: `Bearer ${authToken}`,
+              },
+            });
+          }
+
+          fetchIncomeData();
+          setter({
+            category: '',
+            amount: '',
+            date: new Date().toLocaleDateString('en-GB').split('/').join('.'),
+            description: '',
+          });
+          setIsSubmitted(true);
+        } catch (error) {
+          console.error(error);
+        } finally {
+          setIsUpdating(false);
+        }
       }
-
-      fetchIncomeData();
-      setter({
-        category: '',
-        amount: '',
-        date: new Date().toLocaleDateString('en-GB').split('/').join('.'),
-        description: '',
-      });
-      setIsSubmitted(true);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsUpdating(false);
+      )(), {
+      loading: "Deleting",
+      success: "Success",
+      error: "Error"
     }
+    )
   };
+
   useEffect(() => {
     if (isSubmitted) {
       setEditingIncome(null);

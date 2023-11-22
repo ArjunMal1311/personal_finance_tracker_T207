@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { MdDelete, MdEdit, MdClose } from 'react-icons/md';
 import { FaSave } from 'react-icons/fa';
+import toast from 'react-hot-toast';
 
 function Expense() {
   const [expenses, setExpenses] = useState([]);
@@ -14,22 +15,32 @@ function Expense() {
   }, []);
 
   const fetchData = async () => {
-    const authToken = localStorage.getItem('authToken');
-    try {
-      const response = await axios.get('https://check-returns-70te.onrender.com/expense', {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      });
 
-      if (response.status === 200 && Array.isArray(response.data)) {
-        setExpenses(response.data);
-      } else {
-        console.log("Error: Expected array but received:", response.data);
+    toast.promise(
+      (async () => {
+        const authToken = localStorage.getItem('authToken');
+        try {
+          const response = await axios.get('https://check-returns-70te.onrender.com/expense', {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          });
+
+          if (response.status === 200 && Array.isArray(response.data)) {
+            setExpenses(response.data);
+          } else {
+            console.log("Error: Expected array but received:", response.data);
+          }
+        } catch (error) {
+          console.error(error);
+        }
       }
-    } catch (error) {
-      console.error(error);
+      )(), {
+      loading: "Loading",
+      success: "Success",
+      error: "Error"
     }
+    )
   };
 
   const handleEdit = (expense) => {
@@ -57,54 +68,74 @@ function Expense() {
   };
 
   const handleDelete = async (id) => {
-    const authToken = localStorage.getItem('authToken');
-    try {
-      await axios.delete(`https://check-returns-70te.onrender.com/expense/${id}`, {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      });
 
-      setExpenses(expenses.filter((expense) => expense._id !== id));
-    } catch (error) {
-      console.error(error);
+    toast.promise(
+      (async () => {
+        const authToken = localStorage.getItem('authToken');
+        try {
+          await axios.delete(`https://check-returns-70te.onrender.com/expense/${id}`, {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          });
+
+          setExpenses(expenses.filter((expense) => expense._id !== id));
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      )(), {
+      loading: "Deleting",
+      success: "Success",
+      error: "Error"
     }
+    )
   };
 
   const handleSubmit = async (e, expense, setter) => {
     e.preventDefault();
 
-    const authToken = localStorage.getItem('authToken');
-    try {
-      setIsUpdating(true);
 
-      if (expense._id) {
-        await axios.put(`https://check-returns-70te.onrender.com/expense/${expense._id}`, expense, {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        });
-      } else {
-        await axios.post('https://check-returns-70te.onrender.com/expense', expense, {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        });
+    toast.promise(
+      (async () => {
+        const authToken = localStorage.getItem('authToken');
+        try {
+          setIsUpdating(true);
+
+          if (expense._id) {
+            await axios.put(`https://check-returns-70te.onrender.com/expense/${expense._id}`, expense, {
+              headers: {
+                Authorization: `Bearer ${authToken}`,
+              },
+            });
+          } else {
+            await axios.post('https://check-returns-70te.onrender.com/expense', expense, {
+              headers: {
+                Authorization: `Bearer ${authToken}`,
+              },
+            });
+          }
+
+          fetchData();
+          setter({
+            category: '',
+            amount: '',
+            date: new Date().toLocaleDateString('en-GB').split('/').join('.'),
+            description: '',
+          });
+          setIsSubmitted(true);
+        } catch (error) {
+          console.error(error);
+        } finally {
+          setIsUpdating(false);
+        }
       }
-
-      fetchData();
-      setter({
-        category: '',
-        amount: '',
-        date: new Date().toLocaleDateString('en-GB').split('/').join('.'),
-        description: '',
-      });
-      setIsSubmitted(true);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsUpdating(false);
+      )(), {
+      loading: "Loading",
+      success: "Success",
+      error: "Error"
     }
+    )
   };
 
   useEffect(() => {

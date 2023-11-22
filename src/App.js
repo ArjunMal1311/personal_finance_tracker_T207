@@ -10,7 +10,6 @@ import SignUp from "./components/Login_Register/SignUp"
 import Login from "./components/Login_Register/Login"
 import IsPrivate from "./components/Login_Register/Private"
 import Navbar from "./components/Header_Footer/Navbar"
-import Footer from "./components/Header_Footer/Footer"
 import FixedDeposit from './components/Calculator/Calculator';
 import Calculator from './components/MainCalculator/Calculator';
 import About from './components/About/About';
@@ -42,9 +41,7 @@ function App() {
 
         {/* Contact */}
         <Route path='/contact' element={<Contact />} />
-
       </Routes>
-      <Footer />
     </div >
 
   );

@@ -5,6 +5,7 @@ import { GiReceiveMoney } from "react-icons/gi"
 import { GiPayMoney } from "react-icons/gi";
 import img from "./main_page_bg.png"
 import { FaBalanceScale } from 'react-icons/fa';
+import Footer from "../components/Header_Footer/Footer"
 import toast from 'react-hot-toast';
 
 function DashboardPage() {
@@ -155,6 +156,8 @@ function DashboardPage() {
           </a>
         </div>
       </div>
+
+      <Footer/>
     </div>
   );
 }
