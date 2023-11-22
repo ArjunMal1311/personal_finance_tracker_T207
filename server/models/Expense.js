@@ -15,7 +15,13 @@ const ExpenseSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  
+
+  currency: {
+    type: String,
+    required: true,
+    default: 'INR'
+  },
+
   date: {
     type: Date,
     default: Date.now
