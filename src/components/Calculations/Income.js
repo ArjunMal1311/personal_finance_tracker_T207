@@ -4,6 +4,7 @@ import { MdDeleteOutline } from "react-icons/md"
 import { BiEdit } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai'
 import { FaSave } from 'react-icons/fa';
+import toast from 'react-hot-toast';
 
 function Income() {
   const [incomes, setIncomes] = useState([]);
