@@ -4,7 +4,7 @@ import { AiOutlineMail } from "react-icons/ai"
 
 const Footer = () => {
     return (
-        <div className={`footer-containe bg-black text-white`}>
+        <div className={`footer-containe bg-black text-white w-full`}>
             <div className='container flex flex-col sm:flex-row justify-between'>
                 <div className='mb-4 sm:mb-0 mt-4'>
                     <div className='font-bold text-lg mb-2'>Quick Links</div>
