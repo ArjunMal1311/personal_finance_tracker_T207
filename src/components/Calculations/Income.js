@@ -134,7 +134,7 @@ function Income() {
         }
       }
       )(), {
-      loading: "Deleting",
+      loading: "loading",
       success: "Success",
       error: "Error"
     }

@@ -85,7 +85,7 @@ function Expense() {
         }
       }
       )(), {
-      loading: "Deleting",
+      loading: "loading",
       success: "Success",
       error: "Error"
     }
